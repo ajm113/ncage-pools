@@ -1,0 +1,9 @@
+{
+  "name": "ncage-pools",
+  "version": "0.0.1",
+  "private": true,
+  "description": "N. Cage Pool Supplies",
+  "main": "package.json",
+  "author": "Andrew McRobb",
+  "license": "MIT"
+}
