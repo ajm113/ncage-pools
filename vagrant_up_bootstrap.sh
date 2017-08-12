@@ -3,24 +3,33 @@
 # This file only runs 'once' after you run `vagrant up`. NO NEED TO MANUALLY RUN THIS!
 # We simply make sure everything is setup and installed and build.
 
+echo "This may take a while. Just imagine Iron Man assembling it's self for freakin' Tony Stark!"
 # Additional package repositories.
 
-# Yarn
-sudo curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-sudo echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+# Add Yarn Packages
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-# Updates
-sudo apt-get update                                  # We make sure everything is up-to date.
+# Make sure the stable PHP 7 is being installed.
+sudo add-apt-repository ppa:ondrej/php
 
-# Additional Software / Packages
-sudo apt-get install -y php-mbstring php7.0-xml      # Required for Composer / Larevel.
-sudo apt-get install -y yarn                         # Install Yarn. You can use NPM, but I perfer Yarn.
-sudo apt-get install --reinstall `dpkg -l | grep 'ii  php7' | awk '{ printf($2" "); next}'` # Re-install PHP 7 For some reason the installation is busted in ScotchBox.
-/usr/local/bin/composer self-update             # Usually composer with Scotchbox is older than 60 days.
+# Updates repositories.
+sudo apt-get update                                     # We make sure everything is up-to date.
+
+# Additional Software / Packages Installations
+
+# Scotch Box 3 is still sorta busted with PHP 7. Temp fix.
+sudo apt-get -y install php7.0                          # Install php 7.0
+sudo apt-get -y install php-xml php7.0-xml              # Required for Larevel.
+sudo apt-get -y install php-mbstring                    # Required for Composer / Larevel.
+sudo apt-get -y install libapache2-mod-php7.0 libphp7.0-embed libssl-dev openssl php7.0-cgi php7.0-cli php7.0-common php7.0-dev php7.0-fpm php7.0-phpdbg
+sudo apt-get -y install yarn                            # Install Yarn. You can use NPM, but I perfer Yarn.
+
+sudo /usr/local/bin/composer self-update                # Usually composer with Scotch Box is older than 60 days.
 
 # Some minor configuration setup.
-echo "cd /var/www" > /home/vagrant/.bash_profile    # Set the default directory to /var/www when logging in.
+echo "cd /var/www" > /home/vagrant/.bash_profile        # Set the default directory to /var/www when logging in.
 
 # Setup and build everything.
-composer install
-yarn install
+cd /var/www                 # Change directory to our project root.
+echo "All done! Have fun Baby-O!"
