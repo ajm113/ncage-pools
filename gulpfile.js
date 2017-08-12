@@ -21,28 +21,27 @@ const isDebug = (isProduction) ? false : true;                       // Check if
 
 gulp.task('babel', function() {
 
-    let b = browserify({                            // Get API access to Browserify for transformations.
-        entries: config.babel.input,                // Our entry.js file.
-        debug: isDebug                              // Display any errors we may want to see.
+    let b = browserify({                                            // Get API access to Browserify for transformations.
+        entries: config.babel.input,                                // Our entry.js file.
+        debug: isDebug                                              // Display any errors we may want to see.
     });
 
-    b.transform('babelify');                        // Convert our Babel code to JavaScript.
+    b.transform('babelify');                                        // Convert our Babel code to JavaScript.
 
-    return b.bundle()                               // Bundle all our converneted JavaScript into one source.
-    .pipe(source('bundle.js'))                      // Tells the filename of the stream we want to write to.
-    .pipe(buffer())                                 // Bundle our converted JavaScript code into a stream for pipeline.
-    .pipe(gulpif(isDebug, sourcemaps.init({loadMaps: true}))) // Generate a sourcemap file for better analysis and debugging.
-        // Add transformation tasks to the pipeline here. uglify, linting, etc...
-        .pipe(uglify())                             // Convert our code into minification for better performance and bandwidth.
-        .on('error', gutil.log)                     // Routes any error messages to the console and continues our task manager like normal.
-    .pipe(gulpif(isDebug, sourcemaps.write('./')))  // Write a sourcemap file in the same destination.
-    .pipe(gulp.dest(config.babel.output));          // Write the compiled JavaScript to the destination for our browser.
+    return b.bundle()                                               // Bundle all our converneted JavaScript into one source.
+        .pipe(source('bundle.js'))                                  // Tells the filename of the stream we want to write to.
+        .pipe(buffer())                                             // Bundle our converted JavaScript code into a stream for pipeline.
+        .pipe(gulpif(isDebug, sourcemaps.init({loadMaps: true})))   // Generate a sourcemap file for better analysis and debugging.
+            .pipe(uglify())                                         // Convert our code into minification for better performance and bandwidth.
+            .on('error', gutil.log)                                 // Routes any error messages to the console and continues our task manager like normal.
+        .pipe(gulpif(isDebug, sourcemaps.write('./')))              // Write a sourcemap file in the same destination.
+        .pipe(gulp.dest(config.babel.output));                      // Write the compiled JavaScript to the destination for our browser.
 });
 
 gulp.task('sass', function() {
-    return gulp.src(config.sass.input)              // Set the source of our Sass files for compilation.
-        .pipe(plumber())                            // Initialize plumber for error routing or unexpected issues, so our task manager can continue like normal.
-        .pipe(gulpif(isDebug, sourcemaps.init()))   // Initialize sourcemap for future analysis if debug enabled.
+    return gulp.src(config.sass.input)                          // Set the source of our Sass files for compilation.
+        .pipe(plumber())                                        // Initialize plumber for error routing or unexpected issues, so our task manager can continue like normal.
+        .pipe(gulpif(isDebug, sourcemaps.init()))               // Initialize sourcemap for future analysis if debug enabled.
         .pipe(sass(config.sass.options).on('error', gutil.log)) // Set the error event route to our log util for Gulp.
         .pipe(autoprefixer(config.autoprefixer.options))        // Autoprefix our CSS for major browser support.
         .pipe(gulpif(isDebug, sourcemaps.write('./')))          // Write our our sourcemap file for analysis.
@@ -61,9 +60,9 @@ gulp.task('sass-lint', function() {
 
 gulp.task('babel-lint', function(){
     return gulp.src(config.babellint.input)       // Check our source babel folder for any issues.
-        .pipe(eslint())                                                 // Check our babel code for any errors.
-        .pipe(eslint.format())                                          // Outputs to console.
-        .pipe(eslint.failAfterError());                                 // If there are any errors, return exit code (1).
+        .pipe(eslint())                           // Check our babel code for any errors.
+        .pipe(eslint.format())                    // Outputs to console.
+        .pipe(eslint.failAfterError());           // If there are any errors, return exit code (1).
 });
 
 gulp.task('watch', function () {
