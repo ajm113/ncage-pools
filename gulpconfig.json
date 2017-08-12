@@ -1,0 +1,24 @@
+{
+    "babel": {
+        "input": "./resources/assets/js/entry.jsx",
+        "output": "./public/js",
+        "options": {
+        }
+    },
+    "sass": {
+        "input": "./resources/assets/sass/**/*.scss",
+        "output": "./public/css",
+        "options": {
+            "outputStyle": "compressed"
+        }
+    },
+    "images": {
+        "input": "./resources/assets/img/**/*.{png,jpg,gif}",
+        "output": "./public/img"
+    },
+    "autoprefixer": {
+        "options": {
+            "browsers": ["last 2 versions"]
+        }
+    }
+}

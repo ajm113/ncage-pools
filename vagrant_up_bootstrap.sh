@@ -32,4 +32,6 @@ echo "cd /var/www" > /home/vagrant/.bash_profile        # Set the default direct
 
 # Setup and build everything.
 cd /var/www                 # Change directory to our project root.
+composer install            # Install required Laravel packages.
+yarn install                # Install required Gulp packages.
 echo "All done! Have fun Baby-O!"
