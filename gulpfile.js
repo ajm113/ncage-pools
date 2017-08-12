@@ -7,7 +7,6 @@ const   gulp = require('gulp'),                         // Used to generate task
         plumber = require('gulp-plumber'),              // Keeps our tasks in piped regardless if error.
         autoprefixer = require('gulp-autoprefixer'),    // Autoprefix our CSS for multiple browsers.
         eslint = require('gulp-eslint'),                // Check our JavaScript for consistency and errors.
-        rename = require('gulp-rename'),                // Rename our bundled JavaScript to bundle.js
         buffer = require('vinyl-buffer'),               // Used to convert our Browserify generated file into a steam for Gulp.js
         source = require('vinyl-source-stream'),        // Convert text streams at the start of gulp pipelines, making for nicer interoperability.
         uglify = require('gulp-uglify'),                // Minify JavaScript for performance and bandwidth.
@@ -60,10 +59,17 @@ gulp.task('sass-lint', function() {
     .pipe(scsslint());                      // Start linting our Scss for any errors or performance concerns.
 });
 
+gulp.task('babel-lint', function(){
+    return gulp.src(config.babellint.input)       // Check our source babel folder for any issues.
+        .pipe(eslint())                                                 // Check our babel code for any errors.
+        .pipe(eslint.format())                                          // Outputs to console.
+        .pipe(eslint.failAfterError());                                 // If there are any errors, return exit code (1).
+});
+
 gulp.task('watch', function () {
     gulp.watch([config.babel.input], ['babel']);    // Watch for any changes in JavaScript.
     gulp.watch([config.sass.input], ['sass']);      // Watch for any changes for our Sass.
     gulp.watch([config.images.input], ['images']);  // Watch for any changes in the images.
 });
 
-gulp.task('default', ['babel', 'sass', 'images', 'sass-lint']); // Default will build everything automatically.
+gulp.task('default', ['babel', 'sass', 'images', 'sass-lint', 'babel-lint']); // Default will build everything automatically.

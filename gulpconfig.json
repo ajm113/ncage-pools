@@ -5,11 +5,18 @@
         "options": {
         }
     },
+    "babellint": {
+        "input": ["./resources/assets/js/**/*.{js,jsx}", "!node_modules/**"],
+        "output": "",
+        "options": {
+        }
+    },
     "sass": {
         "input": "./resources/assets/sass/**/*.scss",
         "output": "./public/css",
         "options": {
-            "outputStyle": "compressed"
+            "outputStyle": "compressed",
+            "includePaths": "./node_modules"
         }
     },
     "images": {

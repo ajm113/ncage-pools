@@ -27,12 +27,21 @@ sudo apt-get -y install yarn                            # Install Yarn. You can 
 
 sudo /usr/local/bin/composer self-update                # Usually composer with Scotch Box is older than 60 days.
 
+# Install Ruby for Sass Lint.
+sudo apt-get -y install ruby                            # Install ruby for Sass engine.
+sudo gem install scss-lint                              # Install Scss-Lint for Scss linting.
+
+# Upgrade Node 5 to 6. (for Autoprefixer)
+sudo yarn cache clean -f                                # Clean up our global cache to safely install n
+sudo yarn global add n                                  # Install n so we can easily switch node versions.
+sudo n 6.11.2                                           # Install the latest version 6, while still stable in yarn/npm.
+
 # Some minor configuration setup.
 echo "cd /var/www" > /home/vagrant/.bash_profile        # Set the default directory to /var/www when logging in.
 
 # Setup and build everything.
-cd /var/www                 # Change directory to our project root.
-composer install            # Install required Laravel packages.
-yarn install                # Install required Gulp packages.
-yarn run dev                # Build our front-end assets!
+cd /var/www                                             # Change noasdasddirectory to our project root.
+composer install                                        # Install required Laravel packages.
+yarn install                                            # Install required Gulp packages.
+yarn run dev                                            # Build our front-end assets!
 echo "All done! Have fun Baby-O!"
