@@ -20,5 +20,12 @@
     "node-sass": "^4.5.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "scripts": {
+    "dev": "npm run development",
+    "development": "gulp",
+    "watch": "gulp && gulp watch",
+    "prod": "npm run production",
+    "production": "gulp --production"
   }
 }
