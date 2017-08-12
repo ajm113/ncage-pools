@@ -22,16 +22,16 @@ const isDebug = (isProduction) ? false : true;                       // Check if
 
 gulp.task('babel', function() {
 
-    let b = browserify({                // Get API access to Browserify for transformations.
-        entries: config.babel.input,    // Our entry.js file.
-        debug: isDebug                  // Display any errors we may want to see.
+    let b = browserify({                            // Get API access to Browserify for transformations.
+        entries: config.babel.input,                // Our entry.js file.
+        debug: isDebug                              // Display any errors we may want to see.
     });
 
-    b.transform('babelify');                    // Convert our Babel code to JavaScript.
+    b.transform('babelify');                        // Convert our Babel code to JavaScript.
 
-    return b.bundle()                           // Bundle all our converneted JavaScript into one source.
-    .pipe(source('bundle.js'))                  // Tells the filename of the stream we want to write to.
-    .pipe(buffer())                             // Bundle our converted JavaScript code into a stream for pipeline.
+    return b.bundle()                               // Bundle all our converneted JavaScript into one source.
+    .pipe(source('bundle.js'))                      // Tells the filename of the stream we want to write to.
+    .pipe(buffer())                                 // Bundle our converted JavaScript code into a stream for pipeline.
     .pipe(gulpif(isDebug, sourcemaps.init({loadMaps: true}))) // Generate a sourcemap file for better analysis and debugging.
         // Add transformation tasks to the pipeline here. uglify, linting, etc...
         .pipe(uglify())                             // Convert our code into minification for better performance and bandwidth.
@@ -55,6 +55,10 @@ gulp.task('images', function(){
         .pipe(gulp.dest(config.images.output));     // Set the destination of the directory for our browser to render.
 });
 
+gulp.task('sass-lint', function() {
+  return gulp.src(config.sass.input)        // Set the source of a Sass we want to review.
+    .pipe(scsslint());                      // Start linting our Scss for any errors or performance concerns.
+});
 
 gulp.task('watch', function () {
     gulp.watch([config.babel.input], ['babel']);    // Watch for any changes in JavaScript.
@@ -62,4 +66,4 @@ gulp.task('watch', function () {
     gulp.watch([config.images.input], ['images']);  // Watch for any changes in the images.
 });
 
-gulp.task('default', ['babel', 'sass', 'images']); // Default will build everything automatically.
+gulp.task('default', ['babel', 'sass', 'images', 'sass-lint']); // Default will build everything automatically.
