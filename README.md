@@ -9,6 +9,11 @@ All you need to do to run this project is run `vagrant up` and pop open your bro
 
 If you don't have Vagrant installed, I can't help you, but these awesome [website](https://www.vagrantup.com/) can!
 
+FYI, the `vagrant up` process can take a little bit. So while you wait for the site to boot.
+Open [Reddit](https://www.reddit.com/)! Maybe look around [/r/funny](https://www.reddit.com/r/funny/) to kill sometime or open [Netflix](https://www.netflix.com/)...
+
+This project was not indorsed by Reddit or Netflix, I thought you might want suggestions what to do while you wait.
+
 ## Style Guide
 
 ## Credits / Technologies
