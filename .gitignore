@@ -5,3 +5,6 @@ vendor/
 public/css/
 public/js/
 public/img/
+npm-debug.log
+yarn-error.log
+.env
