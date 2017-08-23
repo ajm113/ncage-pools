@@ -6,10 +6,8 @@
 @section('content')
     <div class="container">
         <h3>{{ $product['name'] }}</h3>
-
-
         <div class="row">
-            <div class="col">
+            <div class="col-lg-5 col-md-5 col-sm-12">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         @foreach($product['images'] as $index => $image)
@@ -28,7 +26,19 @@
                     </a>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h1 class="text-success text-center">$ {{ $product['price'] }}</h1>
+                <form action="/product/{{ $product['id'] }}" method="POST">
+                    <div class="row">
+                        <div class="col-3">
+                            <input type="number" class="form-control" required="required" name="quantity" value="1" min="1" max="999" placeholder="QTY">
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-success btn-block">Add To Cart</button>
+                        </div>
+                    </div>
+                </form>
+                <br>
                 <h4>Description</h4>
                 <p>
                     {{ $product['description'] }}

@@ -20,6 +20,7 @@ class Products extends Migration
             $table->string('type');             // The item type.
             $table->string('name');             // Product name.
             $table->string('brand');            // Product brand.
+            $table->decimal('price',10,2);      // Price of our product.
             $table->timestamps();               // We can use this for our own purposes. Doesn't matter...
         });
 

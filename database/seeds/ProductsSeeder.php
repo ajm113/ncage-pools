@@ -53,7 +53,8 @@ class ProductsSeeder extends Seeder
                 'description' => strip_tags($product['description']),
                 'type' => strip_tags($product['type']),
                 'name' => strip_tags($product['name']),
-                'brand' => strip_tags($product['brand'])
+                'brand' => strip_tags($product['brand']),
+                'price' => rand ( 100, 500 )                // API doesn't offer price, so we generate a random one for now.
             ]);
 
             // Now insert the thumbnails into the 'product_thumbs'

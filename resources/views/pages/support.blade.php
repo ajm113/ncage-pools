@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('pageTitle', "About Cage Pool Supplies")
+@section('pageTitle', "Need Help?")
 
 @section('content')
     <div class="container">
