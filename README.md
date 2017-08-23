@@ -46,13 +46,11 @@ and white space trimming automatically. In case if you are too lazy to install i
 - Andrew McRobb
 - ScotchBox 3
 - Larevel 5
-- React
 - Bootstrap
 - MySQL 5.5
 - Node 6
-- Webpack
+- Gulp
 - Sass (Scss)
-- Redis
 
 ## About Root Files
 - .editorconfig: Nifty file that helps developers define and maintain consistent coding styles between editors and IDEs.
