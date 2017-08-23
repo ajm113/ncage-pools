@@ -1,0 +1,42 @@
+{
+    "vendorsjs": {
+        "input": [
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "./node_modules/jquery/dist/jquery.slim.min.js",
+            "./node_modules/popper.js/dist/umd/popper.min.js"
+        ],
+        "output": "./public/assets/js/vendors"
+    },
+    "scss": {
+        "input": "./resources/assets/sass/**/*.scss",
+        "output": "./public/assets/css/",
+        "options": {
+            "outputStyle": "compressed"
+        }
+    },
+    "js": {
+        "input": "./resources/assets/js/**/*.js",
+        "output": "./public/assets/js/",
+        "options": {
+            "presets": ["es2015"]
+        }
+    },
+    "img": {
+        "input": "./resources/assets/js/**/*.{png,jpg,gif}",
+        "output": "./public/assets/img/",
+        "options": {}
+    },
+    "hash": {
+        "input": false,
+        "output": "assets.json",
+        "outputPath": "./public/assets/config/",
+        "options": {
+            "deleteOld": true,
+            "sourceDir": "./resources/assets"
+        }
+    },
+    "del": {
+        "input": "./public/assets",
+        "options": false
+    }
+}

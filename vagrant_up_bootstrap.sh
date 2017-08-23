@@ -44,4 +44,6 @@ cd /var/www                                             # Change noasdasddirecto
 composer install                                        # Install required Laravel packages.
 yarn install                                            # Install required Gulp packages.
 yarn run dev                                            # Build our front-end assets!
+php artisan migrate                                     # Generate our tables for our store.
+php artisan db:seed                                     # Seed our product tables from the API. (This may tak a while...)
 echo "All done! Have fun Baby-O!"

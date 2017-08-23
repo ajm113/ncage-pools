@@ -1,10 +1,7 @@
-<?php
-    $title = (isset($title)) ? $title : 'Untitled'; // For some reason if we forget to set this.
-?>
 <!doctype html>
 <html lang="{{ config('app.locale') }}">
     <head>
-        @include('includes.head', ['title' => $title])
+        @include('includes.head')
     </head>
     <body>
         @include('includes.header')

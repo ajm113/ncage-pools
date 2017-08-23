@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.landing');
+Route::get('/', 'PoolSuppliesInterface@landing');
+Route::get('/product/{id}', 'PoolSuppliesInterface@product');
+
+Route::get('/about', function(){
+    return view('pages.about');
+});
+
+Route::get('/support', function(){
+    return view('pages.support');
 });

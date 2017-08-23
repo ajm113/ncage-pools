@@ -44,12 +44,13 @@ and white space trimming automatically. In case if you are too lazy to install i
 ## Credits / Technologies
 
 - Andrew McRobb
-- ScotchBox
-- Larevel
+- ScotchBox 3
+- Larevel 5
+- React
+- Bootstrap
 - MySQL 5.5
 - Node 6
-- Gulp
-- Browserify
+- Webpack
 - Sass (Scss)
 - Redis
 
