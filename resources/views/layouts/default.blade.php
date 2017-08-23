@@ -5,11 +5,7 @@
     </head>
     <body>
         @include('includes.header')
-
-        <div id="page-content">
-            @yield('content')
-        </div>
-
+        @yield('content')
         @include('includes.footer')
     </body>
 </html>

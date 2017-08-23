@@ -37,6 +37,7 @@
                             <button type="submit" class="btn btn-success btn-block">Add To Cart</button>
                         </div>
                     </div>
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 </form>
                 <br>
                 <h4>Description</h4>

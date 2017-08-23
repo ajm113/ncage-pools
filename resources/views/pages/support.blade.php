@@ -6,6 +6,6 @@
     <div class="container">
         <h1>Support Using Cage Pools</h1>
         <hr>
-        <p>There is NO support.</p>
+        <p>Sorry, but this support page is in another website!</p>
     </div>
 @stop

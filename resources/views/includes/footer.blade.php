@@ -10,3 +10,5 @@
 <script src="/assets/js/vendors/jquery.slim.min.js"></script>
 <script src="/assets/js/vendors/popper.min.js"></script>
 <script src="/assets/js/vendors/bootstrap.min.js"></script>
+
+@yield('pagescript')
