@@ -2,9 +2,7 @@
 .vagrant
 node_modules/
 vendor/
-public/assets/css/
-public/assets/js/
-public/assets/img/
+public/assets/
 npm-debug.log
 yarn-error.log
 *.todo
