@@ -49,7 +49,7 @@ and white space trimming automatically. In case if you are too lazy to install i
 ## Deploy Instructions (Usually for Admins)
 
 After you have setup the app and recived a pem file from AWS and installed it into your home directory in the Vagrant box via `vagrant ssh`. I.e `/home/vagrant/`,
-make sure you chmod the pem file 400, and that you update the `push.sh` of the location of your directory.
+make sure you chmod the pem file 400, and that you update the `push.sh` of the location of your pem file. (I usually find it easier this way)
 
 Make sure you are `cd` in directory `/var/www/`. Now simply run `sh ./push.sh` and your done deploying the app to produciton!
 
@@ -61,7 +61,7 @@ Make sure you are `cd` in directory `/var/www/`. Now simply run `sh ./push.sh` a
 - Andrew McRobb
 - ScotchBox 3
 - Larevel 5
-- Bootstrap
+- Bootstrap 4.0 - alpha
 - MySQL 5.5
 - Node 6
 - Gulp
