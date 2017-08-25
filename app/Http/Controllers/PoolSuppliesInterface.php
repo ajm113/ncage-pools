@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Request;
+use Request;                                // Check if the request is a post for shopping cart.
 
-use GuzzleHttp\Exception\GuzzleException;
-use GuzzleHttp\Client;
+use App\Products;                           // Pull in products from database for our site.
+use App\ProductThumbs;                      // Pull in product thumbs/covers for our site.
 
-use App\Products;
-use App\ProductThumbs;
-
-use Cart;
+use Cart;                                   // Used when we want to update/add to the cart.
 
 class PoolSuppliesInterface extends Controller
 {
