@@ -32,9 +32,11 @@
     "yargs": "^8.0.2"
   },
   "scripts": {
+    "clean": "gulp clean",
     "dev": "yarn run development",
     "development": "gulp",
-    "test": "eslint ./resources/assets/js/entry.js",
+    "prod": "yarn run production",
+    "production": "gulp --production",
     "watch": "gulp watch"
   }
 }
