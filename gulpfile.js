@@ -60,7 +60,7 @@ gulp.task('scss', ()=> {
 
 gulp.task('scss-lint', () => {
     return gulp.src(config.scss.input)   // Collect all of our Scss code
-	.pipe(scsslint());                   // Find any minor to major errors in our code we should be following!
+	.pipe(scsslint(config.scsslint.options));                   // Find any minor to major errors in our code we should be following!
 });
 
 gulp.task('watch', ()=> {
