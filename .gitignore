@@ -8,3 +8,4 @@ public/assets/img/
 npm-debug.log
 yarn-error.log
 *.todo
+*.pem
