@@ -46,6 +46,14 @@ and white space trimming automatically. In case if you are too lazy to install i
 - 4 spaces = tab
 - Spaces ONLY. They make it easier for in-line comment formating.
 
+
+## Deploy Instructions
+
+After you have setup the app. Please run `vagrant ssh` and make sure you are `cd` in directory `/var/www/`. Now simply run `sh ./push.sh` and your done!
+
+*NOTE:* You DO NOT need to run `gulp --production` before running this command. The shell script handles this for you. :)
+
+
 ## Credits / Technologies
 
 - Andrew McRobb
