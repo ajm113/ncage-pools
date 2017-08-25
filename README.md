@@ -27,9 +27,8 @@ Example:
 /**
  * Print to screen for readability for other programmers.
  *
- * @param  string|array  $abstract
- * @param  \Closure|string|null  $concrete
- * @param  bool  $shared
+ * @param  string  First name
+ * @param  string  Last name
  * @return void
  */
 function print_name($first, $last)
@@ -51,7 +50,7 @@ and white space trimming automatically. In case if you are too lazy to install i
 
 After you have setup the app. Please run `vagrant ssh` and make sure you are `cd` in directory `/var/www/`. Now simply run `sh ./push.sh` and your done!
 
-*NOTE:* You DO NOT need to run `gulp --production` before running this command. The shell script handles this for you. :)
+**NOTE:** You DO NOT need to run `gulp --production` before running the shell script. The `push.sh` script handles this for you. :)
 
 
 ## Credits / Technologies
