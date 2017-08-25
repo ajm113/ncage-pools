@@ -61,7 +61,7 @@ Make sure you are `cd` in directory `/var/www/`. Now simply run `sh ./push.sh` a
 - Andrew McRobb
 - ScotchBox 3
 - Larevel 5
-- Bootstrap 4.0 - alpha
+- Bootstrap 4.0 - beta
 - MySQL 5.5
 - Node 6
 - Gulp
