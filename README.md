@@ -24,9 +24,14 @@ but it won't always answer the 'WHY' it was done that way, that makes a differen
 
 Example:
 ```
-/*
-    Function used to concat first and last name, and print it to the screen for readability.
-*/
+/**
+ * Print to screen for readability for other programmers.
+ *
+ * @param  string|array  $abstract
+ * @param  \Closure|string|null  $concrete
+ * @param  bool  $shared
+ * @return void
+ */
 function print_name($first, $last)
 {
     $fullname = $first . ' ' . $last; // Concat our first and last name for echoing.
