@@ -46,9 +46,12 @@ and white space trimming automatically. In case if you are too lazy to install i
 - Spaces ONLY. They make it easier for in-line comment formating.
 
 
-## Deploy Instructions
+## Deploy Instructions (Usually for Admins)
 
-After you have setup the app. Please run `vagrant ssh` and make sure you are `cd` in directory `/var/www/`. Now simply run `sh ./push.sh` and your done!
+After you have setup the app and recived a pem file from AWS and installed it into your home directory in the Vagrant box via `vagrant ssh`. I.e `/home/vagrant/`,
+make sure you chmod the pem file 400, and that you update the `push.sh` of the location of your directory.
+
+Make sure you are `cd` in directory `/var/www/`. Now simply run `sh ./push.sh` and your done deploying the app to produciton!
 
 **NOTE:** You DO NOT need to run `gulp --production` before running the shell script. The `push.sh` script handles this for you. :)
 
