@@ -17,7 +17,7 @@ This project was not endorsed by Reddit, Pendulum or Savant, I thought you might
 ## Style Guide
 
 I usually like to follow [jQuery Style Guide](https://contribute.jquery.org/style-guide/js/) with my JavaScript/Babel.
-PHP I like to follow closely to [Larevel's Style Guide](https://contribute.jquery.org/style-guide/js/)
+PHP I like to follow closely to [Larevel's Style Guide](https://laravel.com/docs/5.4/contributions#coding-style)
 
 Comments, I like to follow the WHY philosophy, like the Linux code base. You can spend all day writing code, and telling me what it does,
 but it won't always answer the 'WHY' it was done that way, that makes a difference at the end of the day.
