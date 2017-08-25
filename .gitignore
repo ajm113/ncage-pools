@@ -5,5 +5,4 @@ vendor/
 public/assets/
 npm-debug.log
 yarn-error.log
-*.todo
 *.pem
