@@ -46,7 +46,6 @@ class ProductPage {
                 // Calculate new cart value to display on page.
                 let newCartCountValue = parseInt($(CURRENT_CART_COUNT).text(), 10) + response.quantity;
 
-                console.log(newCartCountValue);
                 // Update UI
                 $(CURRENT_CART_COUNT).text(newCartCountValue);
 
