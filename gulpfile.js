@@ -33,7 +33,7 @@ gulp.task('js', ()=> {
     return gulp.src(config.js.input)                                // Source location of our Babel code.
 	.pipe(plumber())                                                // Create plumber to continue process even an event of an error.
     .pipe(gulpif(isDebug, sourcemaps.init()))                       // Initialize our sourcemap just encase we need to debug anything.
-    .pipe(babel())                                                  // Convert our es2015 code into readable JavaScript for every browser.
+    .pipe(babel(config.js.options))                                 // Convert our es2015 code into readable JavaScript for every browser.
     .pipe(gulpif(isDebug, uglify()))                                // Since Babel doesn't do this, we need to use Uglify in this case to keep our JS small.
     .pipe(gulpif(isDebug, sourcemaps.write('./')))                  // Output the sourcemap file when debugging issues.
 	.pipe(gulp.dest(config.js.output));                             // Spit our our newly created JavaScript files!
