@@ -1,6 +1,5 @@
 @extends('layouts.default')
 
-
 @section('pageTitle', $product['name'] )
 
 @section('content')
@@ -8,23 +7,27 @@
         <h3>{{ $product['name'] }}</h3>
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-12">
-                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @foreach($product['images'] as $index => $image)
-                            <div class="carousel-item {{ ($index == 0) ? 'active' : ''  }}">
-                                <img class="d-block img-fluid" src="{{ $image }}" alt="{{ $product['name'] }} {{ $index+1 }}">
-                            </div>
-                        @endforeach
+                @if(count($product['images']) > 1)
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach($product['images'] as $index => $image)
+                                <div class="carousel-item {{ ($index == 0) ? 'active' : ''  }}">
+                                    <img class="d-block img-fluid" src="{{ $image }}" alt="{{ $product['name'] }} {{ $index+1 }}">
+                                </div>
+                            @endforeach
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+                @else
+                    <img class="img-fluid" src="{{ current($product['images']) }}" alt="{{ $product['name'] }}">
+                @endif
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <h1 class="text-success text-center">$ {{ $product['price'] }}</h1>
