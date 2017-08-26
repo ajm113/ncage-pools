@@ -14,24 +14,13 @@
 Route::get('/', 'PoolSuppliesInterface@landing');
 
 Route::get('/product/{id}', 'PoolSuppliesInterface@product');
-Route::post('/product/{id}', 'PoolSuppliesInterface@addToCart');
-
-Route::get('/about', function(){
-    return view('pages.about');
-});
-
-Route::get('/support', function(){
-    return view('pages.support');
-});
+Route::post('/product/{id}', 'CartInterface@add');
 
 Route::get('/cart', function(){
     return view('pages.cart');
 });
-
-Route::delete('/cart', function(){
-    Cart::destroy();
-});
-
+Route::delete('/cart/{id}', 'CartInterface@remove');
+Route::put('/cart/{id}/{qty}', 'CartInterface@update');
 
 Route::get('/checkout', function(){
     return view('pages.checkout');
@@ -40,4 +29,13 @@ Route::get('/checkout', function(){
 Route::post('/success', function(){
     Cart::destroy();
     return view('pages.success');
+});
+
+
+Route::get('/about', function(){
+    return view('pages.about');
+});
+
+Route::get('/support', function(){
+    return view('pages.support');
 });
