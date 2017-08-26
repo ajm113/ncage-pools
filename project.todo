@@ -2,7 +2,7 @@ Front-End Issues:
     ☐ add confirmation dialog when adding to cart.
     ☐ Arrow carousel is not showing up properly. (white on white)
     ☐ Add a vanilla credit card checkout system.
-    ☐ Disable carousel if only one thumb.
+    ✔ Disable carousel if only one thumb. @done (17-08-25 20:34)
 
 Back-End Issues:
     ☐ Add tracking session system.
