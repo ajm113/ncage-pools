@@ -18,7 +18,7 @@
         </ul>
         <ul class="navbar-nav nav-fill">
           <li class="nav-item {{ (Request::is('cart')) ? 'active' : '' }}">
-            <a class="nav-link" href="/cart">My Cart ({{ Cart::count() }})</a>
+            <a class="nav-link" href="/cart">My Cart (<span class="current-cart-count">{{ Cart::count() }}</span>)</a>
           </li>
         </ul>
     </div>

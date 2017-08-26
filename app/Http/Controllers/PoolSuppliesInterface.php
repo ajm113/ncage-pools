@@ -35,14 +35,23 @@ class PoolSuppliesInterface extends Controller
             'product' => $product
         ];
 
-        if(Request::isMethod('post'))
-        {
-            $quantity = intval($_POST['quantity']);                     // Sanatize our input.
-            $quantity = ($quantity < 1 || $quantity > 999) ? 1 : $quantity; // Some simple checking to make sure our quantity is OK.
-
-            Cart::add($product['id'], $product['name'], $quantity, $product['price'], ['size' => 'large']);
-        }
-
         return view('pages.product', $viewVariables);
+    }
+
+    public function addToCart($productId)
+    {
+        $quantity = intval($_POST['quantity']);                     // Sanatize our input.
+        $quantity = ($quantity < 1 || $quantity > 999) ? 1 : $quantity; // Some simple checking to make sure our quantity is OK.
+
+        $product = Products::fetchProduct($productId);
+
+        if($product)
+            Cart::add($product['id'], $product['name'], $quantity, $product['price'], ['size' => 'large']);
+
+        return response()->json([
+            'success' => ($product == true),
+            'quantity' => $quantity,
+            'message' => ($product == false) ? 'Supplied product is invalid!' : ''
+        ]);
     }
 }

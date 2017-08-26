@@ -31,7 +31,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <h1 class="text-success text-center">$ {{ $product['price'] }}</h1>
-                <form action="/product/{{ $product['id'] }}" method="POST">
+                <form action="/product/{{ $product['id'] }}" class="add-to-cart">
                     <div class="row">
                         <div class="col-3">
                             <input type="number" class="form-control" required="required" name="quantity" value="1" min="1" max="999" placeholder="QTY">
@@ -73,4 +73,10 @@
             </div>
         </div>
     </div>
+
+    @include('includes.notifications.adding-to-cart')
+@stop
+
+@section('pagescript')
+    <script src="/assets/js/product-page.js"></script>
 @stop

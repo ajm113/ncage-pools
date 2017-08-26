@@ -14,8 +14,7 @@
 Route::get('/', 'PoolSuppliesInterface@landing');
 
 Route::get('/product/{id}', 'PoolSuppliesInterface@product');
-
-Route::post('/product/{id}', 'PoolSuppliesInterface@product'); // Lazy way of handling adding to cart.
+Route::post('/product/{id}', 'PoolSuppliesInterface@addToCart');
 
 Route::get('/about', function(){
     return view('pages.about');
@@ -28,6 +27,11 @@ Route::get('/support', function(){
 Route::get('/cart', function(){
     return view('pages.cart');
 });
+
+Route::delete('/cart', function(){
+    Cart::destroy();
+});
+
 
 Route::get('/checkout', function(){
     return view('pages.checkout');
