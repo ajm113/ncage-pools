@@ -19,7 +19,7 @@ class Products extends Model
     {
         $options = new QueryOptionsBuilder();
         $options->setLimit(null);
-        return self::fetchWith($options)->get()->first()->toArray();
+        return self::fetchWith($options)->get()->toArray();
     }
 
     /**
@@ -47,8 +47,11 @@ class Products extends Model
         $options = new QueryOptionsBuilder();
         $options->setFilter([
             'type' => $product['type'],
-            'aboveground' => $product['aboveground']
+            'aboveground' => $product['aboveground'],
+            'excludeId' => $product['id']
         ]);
+
+        $options->setLimit(9);
 
        return self::fetchWith($options)->get()->toArray();
     }
@@ -70,7 +73,8 @@ class Products extends Model
             'aboveground',
             'type',
             'priceFrom',
-            'priceTo'
+            'priceTo',
+            'excludeId'
         ]);
 
         $options->setSortByScheme([
@@ -98,6 +102,11 @@ class Products extends Model
         if($options->getFilterItem('id'))
         {
             $query->where('id', intval($options->getFilterItem('id')));
+        }
+
+        if($options->getFilterItem('excludeId'))
+        {
+            $query->where('id', '!=', intval($options->getFilterItem('excludeId')));
         }
 
         if($options->getFilterItem('priceFrom'))

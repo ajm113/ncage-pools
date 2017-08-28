@@ -73,7 +73,12 @@
             </div>
         </div>
     </div>
-
+    @if(!empty($suggestedProducts))
+        <div class="container">
+            <h2>Suggested Products for You</h2>
+        </div>
+        @include('includes.gallery', ['products' => $suggestedProducts])
+    @endif
     @include('includes.notifications.adding-to-cart')
 @stop
 

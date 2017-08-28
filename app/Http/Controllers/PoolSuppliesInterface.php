@@ -31,8 +31,12 @@ class PoolSuppliesInterface extends Controller
         $product = Products::fetchProduct($productId);
         $product = ProductThumbs::fetchIntoProduct($product);
 
+        $suggestedProducts = Products::fetchSuggestedProducts($product);
+        $suggestedProducts = ProductThumbs::fetchIntoProducts($suggestedProducts);
+
         $viewVariables = [
-            'product' => $product
+            'product' => $product,
+            'suggestedProducts' => $suggestedProducts
         ];
 
         return view('pages.product', $viewVariables);

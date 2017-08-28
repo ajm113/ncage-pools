@@ -16,7 +16,7 @@ Back-End Issues:
         ☐ Log everytime user adds to cart. @low
         ☐ Log everytime user attempts to checkout. @low
 
-    ☐ Add product suggestions on the product page. @critical
+    ✔ Add product suggestions on the product page. @critical @done (17-08-28 16:58)
     ☐ Add search functionality. @critical
     ☐ Add sitemap.xml system. @low
 
