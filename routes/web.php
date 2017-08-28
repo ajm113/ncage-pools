@@ -39,3 +39,5 @@ Route::get('/about', function(){
 Route::get('/support', function(){
     return view('pages.support');
 });
+
+Route::post('/nca', 'TrackerInterface@event');
