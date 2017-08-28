@@ -8,13 +8,13 @@ Front-End Issues:
     ✔ Disable carousel if only one thumb. @done (17-08-25 20:34)
 
 Back-End Issues:
-    ☐ Add tracking session system. @critical
+    ✔ Add tracking session system. @critical @done (17-08-27 17:46)
         ✔ Generate user id by available browser information. (e.g: screensize, browser, localstorage, OS) @done (17-08-26 20:28)
         ✔ Create database scheme. @done (17-08-27 10:31)
-        ☐ Create models for database scheme.
-        ☐ Log everytime user opens a product.
-        ☐ Log everytime user adds to cart.
-        ☐ Log everytime user attempts to checkout.
+        ✔ Create models for database scheme. @done (17-08-27 17:46)
+        ✔ Log everytime user opens a product. @done (17-08-27 17:46)
+        ☐ Log everytime user adds to cart. @low
+        ☐ Log everytime user attempts to checkout. @low
 
     ☐ Add product suggestions on the product page. @critical
     ☐ Add search functionality. @critical
