@@ -19,7 +19,7 @@ class Products extends Model
     {
         $options = new QueryOptionsBuilder();
         $options->setLimit(null);
-        return self::fetchAllWith($options)->toArray();
+        return self::fetchWith($options)->get()->first()->toArray();
     }
 
     /**
@@ -37,9 +37,20 @@ class Products extends Model
             'id' => intval($productId)
         ]);
 
-        $query = self::fetchAllWith($options);
+        $options->setLimit(1);
 
-        return $query->first()->toArray();
+        return self::fetchWith($options)->get()->first()->toArray();
+    }
+
+    public static function fetchSuggestedProducts(array $product)
+    {
+        $options = new QueryOptionsBuilder();
+        $options->setFilter([
+            'type' => $product['type'],
+            'aboveground' => $product['aboveground']
+        ]);
+
+       return self::fetchWith($options)->get()->toArray();
     }
 
     /**
@@ -48,7 +59,7 @@ class Products extends Model
      * @param QueryOptionsBuilder $options
      * @return array
      */
-    public static function fetchAllWith(QueryOptionsBuilder $options)
+    public function scopeFetchWith($query, QueryOptionsBuilder $options)
     {
         // Define our filter scheme
         $options->setFilterScheme([
@@ -56,8 +67,8 @@ class Products extends Model
             'brand',
             'type',
             'id',
-            'aboveGround',
-            'category',
+            'aboveground',
+            'type',
             'priceFrom',
             'priceTo'
         ]);
@@ -69,8 +80,6 @@ class Products extends Model
 
         $options->check();
 
-        $query = new Products();
-
         if($options->getFilterItem('name'))
         {
             $query->where('name', 'like', $options->getFilterItem('name') . '%');
@@ -81,9 +90,9 @@ class Products extends Model
             $query->where('brand', 'like', $options->getFilterItem('brand') . '%');
         }
 
-        if($options->getFilterItem('category'))
+        if($options->getFilterItem('type'))
         {
-            $query->where('category', 'like', $options->getFilterItem('category') . '%');
+            $query->where('type', 'like', $options->getFilterItem('type') . '%');
         }
 
         if($options->getFilterItem('id'))
@@ -101,9 +110,9 @@ class Products extends Model
             $query->where('price', '<', $options->getFilterItem('priceTo'));
         }
 
-        if($options->getFilterItem('aboveGround'))
+        if($options->getFilterItem('aboveground'))
         {
-            $query->where('aboveGround', $options->getFilterItem('aboveGround'));
+            $query->where('aboveground', $options->getFilterItem('aboveground'));
         }
 
         if($options->getLimit())
@@ -112,6 +121,6 @@ class Products extends Model
         if($options->getSortBy())
             $query->orderBy($options->getSortBy()[0], $options->getSortBy()[1]);
 
-        return $query->get();
+        return $query;
     }
 }
