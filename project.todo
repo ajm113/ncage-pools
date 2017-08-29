@@ -4,7 +4,7 @@ Front-End Issues:
     ☐ Add a vanilla credit card checkout system. @high
     ✔ Make products in shopping cart link to the item in store. @done (17-08-26 00:08)
     ✔ Add ability to delete items. @done (17-08-26 00:08)
-    ☐ Add a error screen on /cart if no items added. @low
+    ✔ Add a error screen on /cart if no items added. @low @done (17-08-28 20:27)
     ✔ Disable carousel if only one thumb. @done (17-08-25 20:34)
     ✔ Clean up minor JavaScript issues. (Missing ; or removing $.ajax inside nca.js) @low @done (17-08-28 19:44)
     ✔ Add a custom 404 page for kicks. @low @done (17-08-28 20:06)
