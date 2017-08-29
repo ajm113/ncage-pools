@@ -17,7 +17,7 @@ Back-End Issues:
         ✔ Log everytime user opens a product. @done (17-08-27 17:46)
         ☐ Log everytime user adds to cart. @low
         ☐ Log everytime user attempts to checkout. @low
-        ☐ Make sure Larevel knows it's in production mode for live server. @critical
+        ✔ Make sure Larevel knows it's in production mode for live server. @critical @done (17-08-28 19:00)
 
     ✔ Add product suggestions on the product page. @critical @done (17-08-28 16:58)
     ✔ Add search functionality. @critical @done (17-08-28 17:59)
