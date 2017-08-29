@@ -8,7 +8,10 @@
  const GUID_STORAGE_NAME = 'nca_guid';
  const GUID_STORAGE_DAYS = 365;
 
- var self = null;
+
+const ADD_TO_CART_FORM = 'form.add-to-cart';
+
+var self = null;
 
 class AnalyticsTracker {
 
@@ -54,6 +57,9 @@ class AnalyticsTracker {
 
         this.pageLoadEvent();                                           // We know the page loaded so we call this event to tell analytics.
         setTimeout(this.pageDebounceEvent, DEBOUNCE_PAGE_VIEW_DELAY); // Once we know the user has been on the page for a while we let Analytics know.
+
+        // We use vanilla JS since jQuery could delay long enough for it not to function properly.
+        document.querySelector(ADD_TO_CART_FORM).addEventListener('submit', this.addToCartEvent);
     }
 
     pageLoadEvent() {
@@ -69,17 +75,16 @@ class AnalyticsTracker {
     }
 
     addToCartEvent() {
+
+        let quantityField = document.querySelector(ADD_TO_CART_FORM + ' [name=quantity]');
+
+        let productId = this.dataset.id;
+        let productQty = quantityField.value;
+
+
         self.log('Event fired!', 'addToCartEvent');
 
-        self.logEvent('addToCart', {
-            // Item Added To Cart
-        });
-    }
-
-    checkoutEvent() {
-        self.log('Event fired!', 'checkoutEvent');
-
-        self.logEvent('checkout');
+        self.logEvent('addToCart', productId + ':' + productQty);
     }
 
     log(message, methodName='Unknown') {
@@ -127,17 +132,15 @@ class AnalyticsTracker {
             '_token':     self.csrf
         };
 
-        $.ajax({
-            url: '/nca/',
-            data: requestData,
-            type: 'POST'
-        })
-        .done(function( response ) {
-            self.log('Ajax Response:');
-        })
-        .fail(function( response ) {
-            console.error(response);
-        });
+        let serializedData = typeof requestData == 'string' ? requestData : Object.keys(requestData).map(
+            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(requestData[k]) }
+        ).join('&');
+
+        // Since jQuery may not be supported. We use vanilla XMLHttpRequest! Yuck!
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', '/nca/');
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(serializedData);
     }
 
     setupDate() {

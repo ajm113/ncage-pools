@@ -30,6 +30,7 @@ class TrackerInterface extends Controller
         $path = $event['path'];
         $timestamp = intval($event['timestamp']);
         $ipAddress = request()->ip();
+        $data = trim(strip_tags($event['data']));
 
         // First get the event id.
         $event = TrackerEventType::where('name', $eventName)
@@ -57,6 +58,7 @@ class TrackerInterface extends Controller
         $activity->path = $path;
         $activity->ip_id = $ip_id;
         $activity->event_id = $event->id;
+        $activity->data = $data;
         $activity->save();
 
         return true;

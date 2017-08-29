@@ -22,6 +22,7 @@ class TrackerTable extends Migration
             $table->integer('user_id');
             $table->integer('posted');
             $table->string('path');
+            $table->string('data');
             $table->bigInteger('ip_id');
             $table->integer('event_id');
         });

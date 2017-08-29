@@ -34,4 +34,4 @@ rsync -r -avz -e "ssh -i $KEY_FILE" --delete ./ \
     --exclude ".env" \
     $HOST:$ROOT_FOLDER
 
-ssh -i $KEY_FILE $HOST "cd $ROOT_FOLDER && mv .env_production .env && exit"
+ssh -i $KEY_FILE $HOST "cd $ROOT_FOLDER && mv .env_production .env && php artisan migrate:refresh --seed && exit"
