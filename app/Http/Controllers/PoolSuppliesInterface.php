@@ -41,4 +41,27 @@ class PoolSuppliesInterface extends Controller
 
         return view('pages.product', $viewVariables);
     }
+
+    public function search($query)
+    {
+        $query = trim(urldecode($query));
+
+        if($query > 3 && $query < 20)
+        {
+            $products = Products::searchProducts($query);
+            $products = ProductThumbs::fetchIntoProducts($products);
+        }
+        else
+        {
+            $products = [];         // We send an empty array just so the user thinks they need to change their query.
+        }
+
+
+        $viewVariables = [
+            'query' => $query,
+            'products' => $products
+        ];
+
+        return view('pages.search', $viewVariables);
+    }
 }

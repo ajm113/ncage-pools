@@ -56,6 +56,18 @@ class Products extends Model
        return self::fetchWith($options)->get()->toArray();
     }
 
+    public static function searchProducts($query)
+    {
+        $options = new QueryOptionsBuilder();
+        $options->setFilter([
+            'name' => $query
+        ]);
+
+        $options->setLimit(null);
+
+       return self::fetchWith($options)->get()->toArray();
+    }
+
     /**
      * Creates a query based on parems we used in QueryOptionsBuilder.
      *
@@ -86,7 +98,7 @@ class Products extends Model
 
         if($options->getFilterItem('name'))
         {
-            $query->where('name', 'like', $options->getFilterItem('name') . '%');
+            $query->where('name', 'like', '%' . $options->getFilterItem('name') . '%');
         }
 
         if($options->getFilterItem('brand'))

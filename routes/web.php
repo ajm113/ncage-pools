@@ -26,6 +26,8 @@ Route::get('/checkout', function(){
     return view('pages.checkout');
 });
 
+Route::get('/search/{query}', 'PoolSuppliesInterface@search');
+
 Route::post('/success', function(){
     Cart::destroy();
     return view('pages.success');
