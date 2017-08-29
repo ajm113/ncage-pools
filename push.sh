@@ -20,11 +20,18 @@ rsync -r -avz -e "ssh -i $KEY_FILE" --delete ./ \
     --exclude vagrant_up_bootstrap.sh \
     --exclude yarn.lock \
     --exclude package.json \
-    --exclude gulpfile-connect.json \
+    --exclude gulpfile-config.json \
+    --exclude ncage-analytics-body-code.js \
     --exclude Vagrantfile \
     --exclude Andrew-PC.pem \
-    --exclude .editorconfig \
-    --exclude .gitignore \
-    --exclude .git \
+    --exclude scss-lint.yml \
+    --exclude phpunit.xml \
+    --exclude project.todo \
+    --exclude ".editorconfig" \
+    --exclude ".gitignore" \
+    --exclude ".git" \
     --exclude node_modules \
+    --exclude ".env" \
     $HOST:$ROOT_FOLDER
+
+ssh -i $KEY_FILE $HOST "cd $ROOT_FOLDER && mv .env_production .env && exit"
