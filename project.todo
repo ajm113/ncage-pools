@@ -7,7 +7,7 @@ Front-End Issues:
     ☐ Add a error screen on /cart if no items added. @low
     ✔ Disable carousel if only one thumb. @done (17-08-25 20:34)
     ✔ Clean up minor JavaScript issues. (Missing ; or removing $.ajax inside nca.js) @low @done (17-08-28 19:44)
-    ☐ Add a custom 404 page for kicks. @low
+    ✔ Add a custom 404 page for kicks. @low @done (17-08-28 20:06)
 
 Back-End Issues:
     ✔ Add tracking session system. @critical @done (17-08-27 17:46)
