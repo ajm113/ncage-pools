@@ -6,7 +6,7 @@ Front-End Issues:
     ✔ Add ability to delete items. @done (17-08-26 00:08)
     ☐ Add a error screen on /cart if no items added. @low
     ✔ Disable carousel if only one thumb. @done (17-08-25 20:34)
-    ☐ Clean up minor JavaScript issues. (Missing ; or removing $.ajax inside nca.js) @low
+    ✔ Clean up minor JavaScript issues. (Missing ; or removing $.ajax inside nca.js) @low @done (17-08-28 19:44)
     ☐ Add a custom 404 page for kicks. @low
 
 Back-End Issues:
@@ -15,7 +15,7 @@ Back-End Issues:
         ✔ Create database scheme. @done (17-08-27 10:31)
         ✔ Create models for database scheme. @done (17-08-27 17:46)
         ✔ Log everytime user opens a product. @done (17-08-27 17:46)
-        ☐ Log everytime user adds to cart. @low
+        ✔ Log everytime user adds to cart. @low @done (17-08-28 19:43)
         ✔ Log everytime user attempts to checkout. @low @done (17-08-28 19:03)
         ✔ Make sure Larevel knows it's in production mode for live server. @critical @done (17-08-28 19:00)
 
