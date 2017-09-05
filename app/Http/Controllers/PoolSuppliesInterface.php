@@ -45,8 +45,9 @@ class PoolSuppliesInterface extends Controller
     public function search($query)
     {
         $query = trim(urldecode($query));
+        $queryLength  = strlen($query);
 
-        if($query > 3 && $query < 20)
+        if($queryLength > 2 && $queryLength < 20)
         {
             $products = Products::searchProducts($query);
             $products = ProductThumbs::fetchIntoProducts($products);
