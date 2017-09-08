@@ -22,6 +22,7 @@ Back-End Issues:
     ✔ Add product suggestions on the product page. @critical @done (17-08-28 16:58)
     ✔ Add search functionality. @critical @done (17-08-28 17:59)
     ☐ Add sitemap.xml system. @low
+    ☐ Update code comments.
 
 System Issues:
     ☐ Add Redis Intergration @low
