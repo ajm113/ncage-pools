@@ -42,6 +42,12 @@ class Products extends Model
         return self::fetchWith($options)->get()->first()->toArray();
     }
 
+    /**
+     * Fetch all products products that are close to the provided product.
+     *
+     * @param array $product
+     * @return array
+     */
     public static function fetchSuggestedProducts(array $product)
     {
         $options = new QueryOptionsBuilder();
@@ -56,6 +62,12 @@ class Products extends Model
        return self::fetchWith($options)->get()->toArray();
     }
 
+    /**
+     * Search product name's with the provided query string.
+     *
+     * @param string $query
+     * @return array
+     */
     public static function searchProducts($query)
     {
         $options = new QueryOptionsBuilder();
@@ -69,7 +81,7 @@ class Products extends Model
     }
 
     /**
-     * Creates a query based on parems we used in QueryOptionsBuilder.
+     * Creates a query based on params we used in QueryOptionsBuilder.
      *
      * @param QueryOptionsBuilder $options
      * @return array
