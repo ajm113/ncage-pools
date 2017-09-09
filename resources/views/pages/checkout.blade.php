@@ -42,10 +42,6 @@
                         <label for="billing-phone"> Phone</label>
                         <input type="telephone" name="billing-phone" placeholder="1234567890" class="form-control" required="required">
                     </div>
-                    <div class="form-group">
-                        <label for="billing-bitcoin"> Bitcoin Wallet</label>
-                        <input type="password" name="billing-bitcoin" placeholder="1cec944e63c3dfe2d00cba193ac23d71" class="form-control" required="required">
-                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <h2>Shipping</h2>

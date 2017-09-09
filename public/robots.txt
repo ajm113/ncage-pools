@@ -1,2 +1,3 @@
+Sitemap: https://ncagepools.win/sitemaps/index.xml
 User-agent: *
 Disallow:
