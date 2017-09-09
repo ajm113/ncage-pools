@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductThumbs extends Model
@@ -36,14 +37,21 @@ class ProductThumbs extends Model
             $productIds[] = $product['id'];
         }
 
-        $thumbs = self::whereIn('product_id', $productIds);
+        $cacheName = __CLASS__.':'.__METHOD__.':'.md5(implode('', $productIds));
 
-        if($onlyCovers)
+        $thumbs = unserialize(Redis::get($cacheName));
+
+        if($thumbs === FALSE)
         {
-            $thumbs->distinct();
-        }
+            $thumbs = self::whereIn('product_id', $productIds);
 
-        $thumbs = $thumbs->get()->toArray();
+            if($onlyCovers)
+              {
+                $thumbs->distinct();
+            }
+
+            $thumbs = $thumbs->get()->toArray();
+        }
 
         // Now iterate through all the found covers
         // and apply them to the products.
@@ -59,6 +67,9 @@ class ProductThumbs extends Model
                 }
             }
         }
+
+        if($thumbs)
+            Redis::set($cacheName, serialize($thumbs));
 
         return $products;
     }
