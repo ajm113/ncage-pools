@@ -44,7 +44,7 @@ cd /var/www                                             # Change noasdasddirecto
 composer install                                        # Install required Laravel packages.
 yarn install                                            # Install required Gulp packages.
 yarn run dev                                            # Build our front-end assets!
-mysql -u root -e "create database ncagepools"          # Create database for Larevel.
+mysql -u root -e "create database ncagepools"           # Create database for Larevel.
 php artisan migrate                                     # Generate our tables for our store.
 php artisan db:seed                                     # Seed our product tables from the API. (This may tak a while...)
 echo "All done! Have fun Baby-O!"
