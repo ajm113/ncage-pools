@@ -42,13 +42,12 @@ class TrackerInterface extends Controller
 
         // Insert GUI if it doesn't already exsist.
         $trackerUsers = TrackerUsers::firstOrNew(['id' => $guid]);
-        $trackerUsers->id = $guid;
-        $trackerUsers->save();
+        //$trackerUsers->save();
 
         // Drop ip address into our ip table.
         $trackerIp = TrackerIp::firstOrNew(['ip' => $ipAddress]);
-        $trackerIp->ip = $ipAddress;
         $trackerIp->save();
+
         $ip_id = $trackerIp->id;
 
         // Now log activity

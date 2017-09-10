@@ -45,6 +45,5 @@ composer install                                        # Install required Larav
 yarn install                                            # Install required Gulp packages.
 yarn run dev                                            # Build our front-end assets!
 mysql -u root -e "create database ncagepools"           # Create database for Larevel.
-php artisan migrate                                     # Generate our tables for our store.
-php artisan db:seed                                     # Seed our product tables from the API. (This may tak a while...)
+php artisan migrate:refresh --seed                      # Create our database and test data.
 echo "All done! Have fun Baby-O!"

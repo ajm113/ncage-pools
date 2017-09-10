@@ -17,14 +17,6 @@ class AnalyticsTracker {
 
     constructor() {
         this.enableLog = DEBUG_MODE;
-
-        this.csrf = this.getCsrfToken();
-
-        if(this.csrf === null) {
-            this.log('Cannot track user! Failed getting csrf!', 'constructor');
-            return;
-        }
-
         self = this;
 
         // First find out if we can even track the user!
@@ -128,8 +120,7 @@ class AnalyticsTracker {
             'action' :    action,
             'path' :      self.getURIPath(),
             'timestamp' : self.getUNIXTimestamp(),
-            'data' :      data,
-            '_token':     self.csrf
+            'data' :      data
         };
 
         let serializedData = typeof requestData == 'string' ? requestData : Object.keys(requestData).map(
@@ -196,18 +187,6 @@ class AnalyticsTracker {
             if(c.indexOf(nameQuery) == 0) {
                 return decodeURIComponent(c.substring(nameQuery.length, c.length));
             }
-        }
-
-        return null;
-    }
-
-    getCsrfToken() {
-
-        var metaTags = document.getElementsByTagName('meta');
-
-        for (var i = 0; i < metaTags.length; i++) {
-            if(metaTags[i].getAttribute("name") == 'csrf-token')
-                return metaTags[i].getAttribute('content');
         }
 
         return null;
