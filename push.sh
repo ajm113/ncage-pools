@@ -3,13 +3,17 @@
 # Our script variables
 
 HOST="ubuntu@ec2-35-160-159-153.us-west-2.compute.amazonaws.com" # Our remote server for production.
-ROOT_FOLDER=/var/www/                                            # Root folder of where our app sits.
+ROOT_FOLDER="/var/www/"                                          # Root folder of where our app sits.
 KEY_FILE="/home/vagrant/Andrew-PC.pem"                           # [CHANGE THIS] Our pem file for SSH connection.
 
 # Pushes our codebase into the remote server. Everything is done in one sweet ssh command! :)
 
+echo "Building production assets!"
+
 yarn run clean          # We need to cleanup anything that isn't in use before rsync.
 yarn run production     # Make sure all the static content we generate is production ready.
+
+echo "Uploading the application!"
 
 # Upload our app!
 rsync -r -avz -e "ssh -i $KEY_FILE" --delete ./ \
@@ -31,7 +35,12 @@ rsync -r -avz -e "ssh -i $KEY_FILE" --delete ./ \
     --exclude ".gitignore" \
     --exclude ".git" \
     --exclude node_modules \
+    --exclude storage \
     --exclude ".env" \
     $HOST:$ROOT_FOLDER
 
-ssh -i $KEY_FILE $HOST "cd $ROOT_FOLDER && mv .env_production .env && php artisan migrate:refresh --seed && exit"
+echo "Configuring settings."
+
+ssh -i $KEY_FILE $HOST "cd $ROOT_FOLDER && mv .env_production .env && php artisan migrate:refresh --seed --force && exit"
+
+echo "APPLICATION IS DONE!"
