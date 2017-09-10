@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="container">
-        <h1>One Last Step!</h1>
-        <form action="/success" method="POST">
+        <h1>Shipping and Billing</h1>
+        <form action="/payment" method="POST">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -72,7 +72,7 @@
             </div>
             <div class="row">
                 <div class="col text-right">
-                    <button class="btn btn-success btn-lg">Submit Order!!!</button>
+                    <button class="btn btn-success btn-lg">Continue</button>
                 </div>
             </div>
         </form>

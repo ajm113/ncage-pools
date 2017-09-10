@@ -21,6 +21,9 @@ Route::post('/success', function(){
     Cart::destroy();
     return view('pages.success');
 });
+Route::post('/payment', function(){
+    return view('pages.payment');
+});
 Route::get('/about', function(){
     return view('pages.about');
 });
